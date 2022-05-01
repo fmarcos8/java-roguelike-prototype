@@ -1,7 +1,9 @@
 package com.engine.components;
 
 import com.engine.core.Component;
-import com.engine.helpers.Constants;
+import com.engine.core.GameObject;
+import com.engine.game.Game;
+import com.engine.helpers.*;
 
 import java.awt.*;
 
@@ -13,6 +15,7 @@ import static com.engine.helpers.Constants.PlayerConstants.SPRITE_AMOUNT;
 public class Player extends Component {
     private int currentAnimation = PlayerConstants.IDLE_DOWN;
     public boolean FACE_LEFT, FACE_RIGHT, FACE_UP, FACE_DOWN;
+
     @Override
     public void update() {
         setAnimation();
@@ -85,5 +88,19 @@ public class Player extends Component {
             (int)(parent.size.height * GAME_SCALE),
             null
         );
+    }
+
+    public void shoot(Vector2 mousePos) {
+        float startX = parent.transform.position.x + parent.size.width * GAME_SCALE / 2;
+        float startY = parent.transform.position.y + parent.size.height * GAME_SCALE / 2;
+
+        double dx = mousePos.x - startX;
+        double dy = mousePos.y - startY;
+        double dir = Math.atan2(dy, dx);
+
+        GameObject projectile = new GameObject(ObjectType.PROJECTILE, new Transform(new Vector2(startX, startY)), new Size(25, 25));
+        projectile.addComponent(new Projectile(new Vector2(startX, startY), dir));
+
+        Game.debugModeScene.addObject(projectile);
     }
 }

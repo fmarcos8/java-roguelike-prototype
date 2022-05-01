@@ -12,7 +12,7 @@ public class GameObject {
     public ObjectType type;
     public Transform transform;
     public Size size;
-    private final List<Component> components;
+    public List<Component> components;
     public boolean UP, DOWN, LEFT, RIGHT, moving;
 
     public GameObject(ObjectType type, Transform transform, Size size) {
@@ -23,10 +23,10 @@ public class GameObject {
     }
 
     public <T extends Component> T getComponent(Class<T> componentClass) {
-        for (Component component: components) {
-            if (componentClass.isAssignableFrom(component.getClass())) {
+        for (int i = 0; i < components.size(); i++) {
+            if (componentClass.isAssignableFrom(components.get(i).getClass())) {
                 try {
-                    return componentClass.cast(component);
+                    return componentClass.cast(components.get(i));
                 } catch (ClassCastException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -41,15 +41,20 @@ public class GameObject {
         components.add(component);
     }
 
+    public void removeComponent(Component component) {
+        components.remove(component);
+    }
+
+
     public void update() {
-        for (Component component : components) {
-            component.update();
+        for (int i = 0; i < components.size(); i++) {
+            components.get(i).update();
         }
     }
 
     public void render(Graphics g) {
-        for (Component component : components) {
-            component.render(g);
+        for (int i = 0; i < components.size(); i++) {
+            components.get(i).render(g);
         }
     }
 }

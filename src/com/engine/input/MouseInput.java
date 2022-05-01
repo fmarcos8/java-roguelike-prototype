@@ -7,6 +7,7 @@ import com.engine.game.Game;
 import com.engine.helpers.ObjectType;
 import com.engine.helpers.Vector2;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -18,7 +19,15 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            for (int i = 0; i < Game.debugModeScene.getObjects().size(); i++) {
+                GameObject object = Game.debugModeScene.getObjects().get(i);
+                if (object.type == ObjectType.PLAYER) {
+                    Vector2 mousePos = new Vector2(e.getX(), e.getY());
+                    object.getComponent(Player.class).shoot(mousePos);
+                }
+            }
+        }
     }
 
     @Override
@@ -49,7 +58,8 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     @Override
     public void mouseMoved(MouseEvent e) {
         if (Game.debugModeScene != null) {
-            for (GameObject object: Game.debugModeScene.objects) {
+            for (int i = 0; i < Game.debugModeScene.getObjects().size(); i++) {
+                GameObject object = Game.debugModeScene.getObjects().get(i);
                 if (object.type == ObjectType.PLAYER) {
                     object.getComponent(Aim.class).mX = e.getX();
                     object.getComponent(Aim.class).mY = e.getY();

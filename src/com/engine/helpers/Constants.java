@@ -10,8 +10,6 @@ public class Constants {
         public static final int GAME_WIDTH = TILES_SIZE * COUNT_TILES_IN_WIDTH;
         public static final int GAME_HEIGHT = TILES_SIZE * COUNT_TILES_IN_HEIGHT;
         public static final String GAME_TITLE = "Roguelike 0.1v";
-        //public static final int GAME_WIDTH = 800;
-        //public static final int GAME_HEIGHT = 600;
 
         public static final int MAX_FPS = 60;
         public static final int MAX_UPS = 120;
@@ -33,5 +31,13 @@ public class Constants {
         public static final int IDLE_UP = 3;
 
         public static final int SPRITE_AMOUNT = 4;
+    }
+
+    public static class Bullet {
+        public static final String SPRITE_PATH = "assets/sprites/bullet/bullet.png";
+
+        public static final float SPEED = 4;
+        public static final int WIDTH = 32;
+        public static final int HEIGHT = 32;
     }
 }

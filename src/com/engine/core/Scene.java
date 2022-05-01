@@ -19,6 +19,18 @@ public abstract class Scene {
         objects.add(object);
     }
 
+    public List<GameObject> getObjects() {
+        return objects;
+    }
+
+    public void removeObject(GameObject object) {
+        for (int i = 0; i < object.components.size(); i++) {
+            object.removeComponent(object.components.get(i));
+        }
+
+        objects.remove(object);
+    }
+
     public abstract void update();
     public abstract void render(Graphics g);
 

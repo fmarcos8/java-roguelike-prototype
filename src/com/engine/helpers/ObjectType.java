@@ -1,5 +1,5 @@
 package com.engine.helpers;
 
 public enum ObjectType {
-    PLAYER, ENEMY
+    PLAYER, ENEMY, PROJECTILE
 }

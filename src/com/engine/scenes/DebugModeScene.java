@@ -30,22 +30,22 @@ public class DebugModeScene extends Scene {
         );
         player.addComponent(new Player());
         player.addComponent(new Sprite(PlayerConstants.PLAYER_SPRITE_PATH, PlayerConstants.WIDTH, PlayerConstants.HEIGHT));
-        player.addComponent(new BoxCollider2D((int)(PlayerConstants.WIDTH * GAME_SCALE * 2), (int)(PlayerConstants.HEIGHT * GAME_SCALE * 2), true));
+        player.addComponent(new BoxCollider2D((int)(PlayerConstants.WIDTH * GAME_SCALE * 2), (int)(PlayerConstants.HEIGHT * GAME_SCALE * 2), false));
         player.addComponent(new Aim());
         addObject(player);
     }
 
     @Override
     public void update() {
-        for (GameObject object: objects) {
-            object.update();
+        for (int i = 0; i < objects.size(); i++) {
+            objects.get(i).update();
         }
     }
 
     @Override
     public void render(Graphics g) {
-        for (GameObject object: objects) {
-            object.render(g);
+        for (int i = 0; i < objects.size(); i++) {
+            objects.get(i).render(g);
         }
     }
 }

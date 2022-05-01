@@ -12,19 +12,19 @@ public class KeyInput extends KeyAdapter implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        for (GameObject object: Game.debugModeScene.objects) {
-            if (object.type == ObjectType.PLAYER) {
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    object.LEFT = true;
+        for (int i = 0; i < Game.debugModeScene.getObjects().size(); i++) {
+            if (Game.debugModeScene.getObjects().get(i).type == ObjectType.PLAYER) {
+                if (e.getKeyCode() == KeyEvent.VK_A) {
+                    Game.debugModeScene.getObjects().get(i).LEFT = true;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    object.RIGHT = true;
+                if (e.getKeyCode() == KeyEvent.VK_D) {
+                    Game.debugModeScene.getObjects().get(i).RIGHT = true;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    object.UP = true;
+                if (e.getKeyCode() == KeyEvent.VK_W) {
+                    Game.debugModeScene.getObjects().get(i).UP = true;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    object.DOWN = true;
+                if (e.getKeyCode() == KeyEvent.VK_S) {
+                    Game.debugModeScene.getObjects().get(i).DOWN = true;
                 }
             }
         }
@@ -32,19 +32,19 @@ public class KeyInput extends KeyAdapter implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        for (GameObject object: Game.debugModeScene.objects) {
-            if (object.type == ObjectType.PLAYER) {
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    object.LEFT = false;
+        for (int i = 0; i < Game.debugModeScene.getObjects().size(); i++) {
+            if (Game.debugModeScene.getObjects().get(i).type == ObjectType.PLAYER) {
+                if (e.getKeyCode() == KeyEvent.VK_A) {
+                    Game.debugModeScene.getObjects().get(i).LEFT = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    object.RIGHT = false;
+                if (e.getKeyCode() == KeyEvent.VK_D) {
+                    Game.debugModeScene.getObjects().get(i).RIGHT = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    object.UP = false;
+                if (e.getKeyCode() == KeyEvent.VK_W) {
+                    Game.debugModeScene.getObjects().get(i).UP = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    object.DOWN = false;
+                if (e.getKeyCode() == KeyEvent.VK_S) {
+                    Game.debugModeScene.getObjects().get(i).DOWN = false;
                 }
             }
         }
